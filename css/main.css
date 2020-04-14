@@ -1,0 +1,11 @@
+body{
+    margin: 1em;
+}
+a{
+    text-decoration: none;
+    color: rgba(15,100,200);
+    font-size: 1.1em;
+}
+a:visited{
+    color: rgba(150,100,200);
+}
