@@ -3,9 +3,17 @@ function fTable() {
     x2,
     dx,
     y,
-    table;
-  // table = document.getElementById('table');
+    table = document.getElementById('table');
   // add table cleaning
+  console.log(table.childNodes.length);
+  console.log(table.childNodes[2]);
+  console.log(table.childNodes[3]);
+  console.log(table.childNodes[4]);
+  for (var i = 3; i <= table.childNodes.length; i++){
+    console.log(table.childNodes[2].children[0].innerText);
+    table.removeChild(table.childNodes[2]);
+  };
+  //table.removeChild(1);
   do {
     x1 = prompt('Введите целое число x1', 2);
     if (isNaN(x1) == true) { alert('Вы ввели строку, введите число') };
@@ -31,11 +39,9 @@ function fTable() {
     };
     if (isNaN(dx) == true) { alert('Вы ввели строку, введите число') };
   } while (isNaN(dx) == true);
-  table = document.getElementById('table');
-  row = document.createElement('tr');
-  xD = document.createElement('td');
-  yD = document.createElement('td');
-  // solve problem with float dx
+  // row = document.createElement('tr');
+  // xD = document.createElement('td');
+  // yD = document.createElement('td');
   if (x1 < x2) {
     while (x1 <= x2) {
       if (Math.cos(x1) == 0) {
@@ -50,7 +56,7 @@ function fTable() {
       row.appendChild(xD);
       row.appendChild(yD);
       table.appendChild(row);
-      x1 = parseInt(x1) + parseInt(dx);
+      x1 = parseFloat(x1) + parseFloat(dx);
     }
   } else {
     while (x1 >= x2) {
@@ -66,7 +72,7 @@ function fTable() {
       row.appendChild(xD);
       row.appendChild(yD);
       table.appendChild(row);
-      x1 = parseInt(x1) + parseInt(dx);
+      x1 = parseFloat(x1) + parseFloat(dx);
     };
   }
 }
