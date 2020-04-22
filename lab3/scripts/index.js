@@ -1,30 +1,26 @@
 function fTable() {
-  var x1,
+  var 
+    x1,
     x2,
     dx,
     y,
     table = document.getElementById('table');
-  // add table cleaning
-  console.log(table.childNodes.length);
-  console.log(table.childNodes[2]);
-  console.log(table.childNodes[3]);
-  console.log(table.childNodes[4]);
-  for (var i = 3; i <= table.childNodes.length; i++){
-    console.log(table.childNodes[2].children[0].innerText);
-    table.removeChild(table.childNodes[2]);
-  };
-  //table.removeChild(1);
+  if(table.childNodes.length != 2){
+    while (table.childNodes.length != 2){
+      table.removeChild(table.childNodes[2]);
+    }
+  }
   do {
     x1 = prompt('Введите целое число x1', 2);
     if (isNaN(x1) == true) { alert('Вы ввели строку, введите число') };
-    if (parseInt(x1) % 1 != 0) { alert('Вы ввели вещественное число, введите целое') };
-  } while (isNaN(x1) == true || x1 % 1 != 0);
+  } while (isNaN(x1) == true);
   do {
     x2 = prompt('Введите число x2 не равное ' + x1, 3);
     if (x1 == x2) { alert('Вы ввели x2 равное ' + x1) };
     if (isNaN(x2) == true) { alert('Вы ввели строку, введите число') };
-    if (parseInt(x1) % 1 != 0) { alert('Вы ввели вещественное число, введите целое') };
   } while (isNaN(x2) == true);
+  x1 = parseInt(x1);
+  x2 = parseInt(x2);
   do {
     if (x1 < x2) {
       do {
@@ -39,9 +35,6 @@ function fTable() {
     };
     if (isNaN(dx) == true) { alert('Вы ввели строку, введите число') };
   } while (isNaN(dx) == true);
-  // row = document.createElement('tr');
-  // xD = document.createElement('td');
-  // yD = document.createElement('td');
   if (x1 < x2) {
     while (x1 <= x2) {
       if (Math.cos(x1) == 0) {

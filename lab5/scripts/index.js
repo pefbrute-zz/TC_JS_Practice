@@ -3,18 +3,26 @@ function average(){
     rows,
     columns,
     nums = [],
-    hRow = document.getElementById('main');
+    hRowValues = document.getElementById('values'),
+    hRowNumbers = document.getElementById('numbers');
   // add row cleaning
+  console.log(hRowValues.childNodes);
+  if(hRowValues.childNodes.length != 3){
+    while (hRowValues.childNodes.length != 3){
+      hRowValues.removeChild(hRowValues.childNodes[3]);
+      hRowNumbers.removeChild(hRowNumbers.childNodes[3]);
+    }
+  }
   do {
     rows = prompt("Введите желаемое количество строк", 2);
     if (isNaN(rows) == true){alert('Вы ввели строку, введите число')};
-    if (x1 % 1 != 0){alert('Вы ввели вещественное число, введите целое')};
-  }while(isNaN(rows) == true || x1 % 1 != 0);
+    if (rows % 1 != 0){alert('Вы ввели вещественное число, введите целое')};
+  }while(isNaN(rows) == true || rows % 1 != 0);
   do {
     columns = prompt("Введите желаемое количество столбцов", 2);
     if (isNaN(columns) == true){alert('Вы ввели строку, введите число')};
-    if (x1 % 1 != 0){alert('Вы ввели вещественное число, введите целое')};
-  }while(isNaN(rows) == true || x1 % 1 != 0);
+    if (rows % 1 != 0){alert('Вы ввели вещественное число, введите целое')};
+  }while(isNaN(rows) == true || rows % 1 != 0);
   var numMatrix = matrix(rows,columns);
   for(var i=0; i<columns; i++){
     nums[i] = 0;
@@ -27,6 +35,9 @@ function average(){
     var hColumn;
     hColumn = document.createElement('td');
     hColumn.appendChild(document.createTextNode(nums[i]));
-    hRow.appendChild(hColumn);
+    hRowValues.appendChild(hColumn);
+    hColumn = document.createElement('td');
+    hColumn.appendChild(document.createTextNode(i));
+    hRowNumbers.appendChild(hColumn);
   };
 }
