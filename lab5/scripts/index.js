@@ -5,7 +5,6 @@ function average(){
     nums = [],
     hRowValues = document.getElementById('values'),
     hRowNumbers = document.getElementById('numbers');
-  // add row cleaning
   console.log(hRowValues.childNodes);
   if(hRowValues.childNodes.length != 3){
     while (hRowValues.childNodes.length != 3){
