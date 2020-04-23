@@ -20,6 +20,7 @@ function getMinWords(){
     minWords[0] = words[0];
     debugger;
     var j = 0;
+    //add deleting the previous "the smallest" numbers
     for(let i = 1; i < words.length; i++){
       if (minWords[0].length > words[i].length){
         minWords[0] = words[i];
