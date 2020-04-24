@@ -13,14 +13,14 @@ function convert() {
         key = prompt('Сколько киллометров перевести в мили?', 3);
         if (isNaN(key) == true) { alert('Вы ввели строку, введите число') };
       } while (isNaN(key) == true);
-      alert('В ' + key + ' километров ' + key * 0.62137 + ' миль');
+      alert(key + ' километра =' + key * 0.62137 + ' миль');
       break;
     case 1:
       do {
         key = prompt('Сколько миль перевести в киллометры?', 4);
         if (isNaN(key) == true) { alert('Вы ввели строку, введите число') };
       } while (isNaN(key) == true);
-      alert('В ' + key + ' миль ' + key * 1.60934 + ' киллометров')
+      alert(key + ' мили = ' + key * 1.60934 + ' киллометров')
       break;
   }
 }
