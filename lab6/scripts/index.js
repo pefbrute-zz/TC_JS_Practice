@@ -1,7 +1,6 @@
 function getMinWords(){
   var 
-  //try don't assign string 
-      string = null,
+      string,
       words = [],
       minWords = [],
       hRow = document.getElementById('main');
@@ -18,26 +17,18 @@ function getMinWords(){
   if (string.indexOf(' ') >= 0){
     words = string.split(' ');
     minWords[0] = words[0];
-    debugger;
     var j = 0;
-    //add deleting the previous "the smallest" numbers
-    for(let i = 1; i < words.length; i++){
+    for(let i = 1; i < words.length - 1; i++){
       if (minWords[0].length > words[i].length){
+        minWords.splice(0,minWords.length - 1);
         minWords[0] = words[i];
+        j = 0;
       }else if(minWords[0].length == words[i].length){
         j++;
         minWords[j] = words[i];
-        for(let k = 0; k < minWords.length - 1; k++){
-          for(let f = 0; f < minWords.length; f++){
-            if (minWords[k].length < minWords[f].length){
-              minWords.splice(f,1);
-              j--;
-            }  
-          }
-        }
       };
     }
-    for(var i = 0; i < minWords.length; i++){
+    for(let i = 0; i < minWords.length; i++){
       var hColumn;
       hColumn = document.createElement('td');
       hColumn.appendChild(document.createTextNode(minWords[i]));
