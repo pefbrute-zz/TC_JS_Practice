@@ -6,13 +6,16 @@ function calcMultiple(){
   do {
     amount = prompt("Введите желаемое количество элементов в массиве", 2);
     if (isNaN(amount) == true){alert('Вы ввели строку, введите число')};
-  }while(isNaN(amount) == true);
+    if (amount % 1 != 0 && isNaN(amount) != true){alert('Вы ввели вещественное число, введите целое')};
+    if (amount < 0){alert('Вы ввели отрицательное число, введите положительное')};
+  }while(isNaN(amount) == true || amount % 1 != 0 || amount < 0);
   for (var i = 0; i < amount; i++){
     do {
       key = prompt('Введите желаемый ' + i + ' элемент для массива', 2);
       if (isNaN(key) == true){alert('Вы ввели строку, введите число')};
-      //add check on float nums;
-    }while(isNaN(key) == true);
+      if (key % 1 != 0 && isNaN(key) != true){alert('Вы ввели вещественное число, введите целое')};
+      if (key < 0){alert('Вы ввели отрицательное число, введите положительное')};
+  }while(isNaN(key) == true || key % 1 != 0 || key < 0);
     nums[i] = parseInt(key);
   };
   do {

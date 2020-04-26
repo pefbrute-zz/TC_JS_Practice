@@ -15,13 +15,15 @@ function average(){
   do {
     rows = prompt("Введите желаемое количество строк", 2);
     if (isNaN(rows) == true){alert('Вы ввели строку, введите число')};
-    if (rows % 1 != 0){alert('Вы ввели вещественное число, введите целое')};
-  }while(isNaN(rows) == true || rows % 1 != 0);
+    if (rows % 1 != 0 && isNaN(rows) != true){alert('Вы ввели вещественное число, введите целое')};
+    if (rows < 0){alert('Вы ввели отрицательное число, введите положительное')};
+  }while(isNaN(rows) == true || rows % 1 != 0 || rows < 0);
   do {
     columns = prompt("Введите желаемое количество столбцов", 2);
     if (isNaN(columns) == true){alert('Вы ввели строку, введите число')};
-    if (rows % 1 != 0){alert('Вы ввели вещественное число, введите целое')};
-  }while(isNaN(rows) == true || rows % 1 != 0);
+    if (columns % 1 != 0 && isNaN(columns) != true){alert('Вы ввели вещественное число, введите целое')};
+    if (columns < 0){alert('Вы ввели отрицательное число, введите положительное')};
+  }while(isNaN(columns) == true || columns % 1 != 0 || columns < 0);
   var numMatrix = matrix(rows,columns);
   for(var i=0; i<columns; i++){
     nums[i] = 0;

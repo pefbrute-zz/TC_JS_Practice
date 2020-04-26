@@ -1,9 +1,10 @@
 function getMinWords(){
   var 
-      string,
-      words = [],
-      minWords = [],
-      hRow = document.getElementById('main');
+    string,
+    words = [],
+    minWords = [],
+    hRow = document.getElementById('main'),
+    hColumn;
   if(hRow.childNodes.length != 3){
     while (hRow.childNodes.length != 3){
       hRow.removeChild(hRow.childNodes[3]);
@@ -35,6 +36,8 @@ function getMinWords(){
       hRow.appendChild(hColumn);
     }
   }else{
-    alert('Минимальное слово: ' + string);
+    hColumn = document.createElement('td');
+    hColumn.appendChild(document.createTextNode(string));
+    hRow.appendChild(hColumn);
   };
 }
