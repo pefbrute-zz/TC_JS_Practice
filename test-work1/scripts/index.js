@@ -12,43 +12,39 @@ function isCorrectEmail(){
       debugger;
       var indexOfAtSign = email.indexOf('@');
       if(indexOfAtSign >= 0){          
-        if(indexOfAtSign < email.length - 1){
-          if(isNotSpace(email[indexOfAtSign - 1])){
-            let emailWithoutAtSign = email.slice(indexOfAtSign + 1, email.length);
-            var FirstIndexOfDot = emailWithoutAtSign.indexOf('.');
-            if (FirstIndexOfDot < 0){
-              alert('Нет точки после @ знака');
-            }else if(FirstIndexOfDot == 0){
-              alert('Не хватает 1 символа между @ знаком и первой точкой');
-            }else{
-              if(isNotSpace(emailWithoutAtSign[FirstIndexOfDot - 1])){
-                var LastIndexOfDot = emailWithoutAtSign.lastIndexOf('.');
-                if (LastIndexOfDot + 2 < emailWithoutAtSign.length){
-                  if (isNotSpace(emailWithoutAtSign[LastIndexOfDot + 1]) && isNotSpace(emailWithoutAtSign[LastIndexOfDot + 2])){
-                    alert('Всё замечательно. Ошибок в тексте нет.');
-                    break;
-                  }else{
-                    alert(
-                      'Недостаточно символов после последней точки.'
-                    );
-                  }
+        if(isNotSpace(email[indexOfAtSign - 1])){
+          let emailWithoutAtSign = email.slice(indexOfAtSign + 1, email.length);
+          var FirstIndexOfDot = emailWithoutAtSign.indexOf('.');
+          if (FirstIndexOfDot < 0){
+            alert('Нет точки после @ знака');
+          }else if(FirstIndexOfDot == 0){
+            alert('Не хватает 1 символа между @ знаком и первой точкой');
+          }else{
+            if(isNotSpace(emailWithoutAtSign[FirstIndexOfDot - 1])){
+              var LastIndexOfDot = emailWithoutAtSign.lastIndexOf('.');
+              if (LastIndexOfDot + 2 < emailWithoutAtSign.length){
+                if (isNotSpace(emailWithoutAtSign[LastIndexOfDot + 1]) && isNotSpace(emailWithoutAtSign[LastIndexOfDot + 2])){
+                  alert('Всё замечательно. Ошибок в тексте нет.');
+                  break;
                 }else{
                   alert(
-                    'Недостаточно символов после последней точки.' + 
-                    'Требуется ввести минимум 2 знака.'
+                    'Недостаточно символов после последней точки.'
                   );
                 }
               }else{
-                alert('Между знаком @ и первой точкой не хватает 1 символа.');
-                break;
+                alert(
+                  'Недостаточно символов после последней точки.' + 
+                  'Требуется ввести минимум 2 знака.'
+                );
               }
+            }else{
+              alert('Между знаком @ и первой точкой не хватает 1 символа.');
+              break;
             }
-          }else{
-            alert('Недостаточно символов между знаком @ и первой точкой.');
-            break;
           }
         }else{
-          alert('Не достаточно символов после или перед знаком @.');
+          alert('Недостаточно символов между знаком @ и первой точкой.');
+          break;
         }
       }else{
         alert('@ знак не введён.');
