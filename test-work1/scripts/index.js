@@ -1,27 +1,27 @@
 function isCorrectEmail(){
   var 
-    string;
+    email;
   do {
-    string = prompt("Введите какую-нибудь строку", 2);
-    string = string.replace(/\s+/g,' ');
-    if(string == '' || string == ' '){
+    email = prompt("Введите ваш электронный адрес", 2);
+    email = email.replace(/\s+/g,' ');
+    if(email == '' || email == ' '){
       alert('Вы ничего не ввели');
-    }else if(string.length < 6){
-      alert('Вы ввели только ' + string.length + ' символов. Нужно ввести, как минимум, 6')
-    }else if(string.length >= 6){
+    }else if(email.length < 6){
+      alert('Вы ввели только ' + email.length + ' символов. Нужно ввести, как минимум, 6')
+    }else if(email.length >= 6){
       debugger;
-      var indexOfAtSign = string.indexOf('@');
+      var indexOfAtSign = email.indexOf('@');
       if(indexOfAtSign >= 0){          
-        if(indexOfAtSign < string.length - 1 && indexOfAtSign - 1 != -1){
-          if(isLetter(string[indexOfAtSign - 1])){
-              if(indexOfAtSign + 5 <= string.length){
-                let stringWithoutAtSign = string.slice(indexOfAtSign, string.length - 1);
-                var FirstIndexOfDot = stringWithoutAtSign.indexOf('.');
+        if(indexOfAtSign < email.length - 1 && indexOfAtSign - 1 != -1){
+          if(isLetter(email[indexOfAtSign - 1])){
+              if(indexOfAtSign + 5 <= email.length){
+                let emailWithoutAtSign = email.slice(indexOfAtSign, email.length - 1);
+                var FirstIndexOfDot = emailWithoutAtSign.indexOf('.');
                 if (FirstIndexOfDot > 0){
-                  if(isLetter(string[FirstIndexOfDot - 1])){
-                    var LastIndexOfDot = string.lastIndexOf('.');
-                    if (LastIndexOfDot >= 0 && LastIndexOfDot + 2 < string.length){
-                      if (isLetter(string[LastIndexOfDot + 1]) && isLetter(string[LastIndexOfDot + 2])){
+                  if(isLetter(email[FirstIndexOfDot - 1])){
+                    var LastIndexOfDot = email.lastIndexOf('.');
+                    if (LastIndexOfDot >= 0 && LastIndexOfDot + 2 < email.length){
+                      if (isLetter(email[LastIndexOfDot + 1]) && isLetter(email[LastIndexOfDot + 2])){
                         alert('Всё замечательно. У вас нет никаких ошибок в тексте');
                         break;
                       }else{
@@ -56,6 +56,6 @@ function isCorrectEmail(){
       break;
     }
   } 
-}while(string == '' || string == ' ');
+}while(email == '' || email == ' ');
 
 }
