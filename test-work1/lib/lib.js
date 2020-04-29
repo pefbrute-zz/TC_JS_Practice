@@ -1,3 +1,3 @@
-function isLetter(character){
-  return character.toLowerCase() != character.toUpperCase();
+function isNotSpace(character){
+  return character != undefined && character != '' && character != ' ';
 }

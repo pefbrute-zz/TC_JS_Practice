@@ -5,57 +5,55 @@ function isCorrectEmail(){
     email = prompt("Введите ваш электронный адрес", 2);
     email = email.replace(/\s+/g,' ');
     if(email == '' || email == ' '){
-      alert('Вы ничего не ввели');
+      alert('Ничего не введено');
     }else if(email.length < 6){
-      alert('Вы ввели только ' + email.length + ' символов. Нужно ввести, как минимум, 6')
+      alert('Введено только ' + email.length + ' символов. Требуется ввести, как минимум, 6 символов.')
     }else if(email.length >= 6){
       debugger;
       var indexOfAtSign = email.indexOf('@');
       if(indexOfAtSign >= 0){          
-        if(indexOfAtSign < email.length - 1 && indexOfAtSign - 1 != -1){
-          if(isLetter(email[indexOfAtSign - 1])){
-              if(indexOfAtSign + 5 <= email.length){
-                let emailWithoutAtSign = email.slice(indexOfAtSign, email.length - 1);
-                var FirstIndexOfDot = emailWithoutAtSign.indexOf('.');
-                if (FirstIndexOfDot > 0){
-                  if(isLetter(email[FirstIndexOfDot - 1])){
-                    var LastIndexOfDot = email.lastIndexOf('.');
-                    if (LastIndexOfDot >= 0 && LastIndexOfDot + 2 < email.length){
-                      if (isLetter(email[LastIndexOfDot + 1]) && isLetter(email[LastIndexOfDot + 2])){
-                        alert('Всё замечательно. У вас нет никаких ошибок в тексте');
-                        break;
-                      }else{
-                        alert(
-                          'Вы ввели недостаточно знаков после последней точки.' + 
-                          'Нужно ввести минимум 2 знака'
-                        );
-                      }
-                    }else{
-                      alert("В вашем электронном адресе недостаточно символов");
-                    }
-                  }else{
-                    alert('Между знаком @ и первой точкой, после @ знака, не достаточно знаков');
+        if(indexOfAtSign < email.length - 1){
+          if(isNotSpace(email[indexOfAtSign - 1])){
+            let emailWithoutAtSign = email.slice(indexOfAtSign + 1, email.length);
+            var FirstIndexOfDot = emailWithoutAtSign.indexOf('.');
+            if (FirstIndexOfDot < 0){
+              alert('Нет точки после @ знака');
+            }else if(FirstIndexOfDot == 0){
+              alert('Не хватает 1 символа между @ знаком и первой точкой');
+            }else{
+              if(isNotSpace(emailWithoutAtSign[FirstIndexOfDot - 1])){
+                var LastIndexOfDot = emailWithoutAtSign.lastIndexOf('.');
+                if (LastIndexOfDot + 2 < emailWithoutAtSign.length){
+                  if (isNotSpace(emailWithoutAtSign[LastIndexOfDot + 1]) && isNotSpace(emailWithoutAtSign[LastIndexOfDot + 2])){
+                    alert('Всё замечательно. Ошибок в тексте нет.');
                     break;
+                  }else{
+                    alert(
+                      'Недостаточно символов после последней точки.'
+                    );
                   }
                 }else{
-                  alert('У вас нет точки после @ знака');
+                  alert(
+                    'Недостаточно символов после последней точки.' + 
+                    'Требуется ввести минимум 2 знака.'
+                  );
                 }
               }else{
-                alert("У вас не достаточно символов после знака @");
-                break
+                alert('Между знаком @ и первой точкой не хватает 1 символа.');
+                break;
               }
-          }else{
-              alert('Недостаточно символов между знаком @ и первой точкой');
-              break;
             }
+          }else{
+            alert('Недостаточно символов между знаком @ и первой точкой.');
+            break;
+          }
         }else{
-          alert('У вас не достаточно символов после или перед знаком @');
+          alert('Не достаточно символов после или перед знаком @.');
         }
-    }else{
-      alert('Вы не ввели @ знак');
-      break;
-    }
-  } 
-}while(email == '' || email == ' ');
-
+      }else{
+        alert('@ знак не введён.');
+        break;
+      }
+    } 
+  }while(email == '' || email == ' ');
 }
