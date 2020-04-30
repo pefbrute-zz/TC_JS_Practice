@@ -1,13 +1,23 @@
 var obj = {
-   className
+   className: 'class'
 }
-function addClass(){
+function addClass(object, name){
+  if ( !(object.className.includes(name)) ){
+    document.getElementById('classesList').append(' ' + name);
+    object.className += ' ' + name;
+    alert('Имя класса было добавлено в список классов успешно!');
+  }else{
+    alert('Такое имя не было добавлено в список классов, т.к уже есть в списке классов.');
+  }
+}
+function runProgram(){
   var className;
   do {
-    email = prompt("Введите ваш электронный адрес", 2);
-    email = email.replace(/\s+/g,' ');
-    if(email == '' || email == ' '){
+    className = prompt("Введите имя класса(или классов через пробел)", 2);
+    className = className.replace(/\s+/g,' ');
+    if(className == '' || className == ' '){
       alert('Ничего не введено');
-    } 
-  }while(email == '' || email == ' ');
+    }
+  }while(className == '' || className == ' ')
+  addClass(obj, className);
 }
