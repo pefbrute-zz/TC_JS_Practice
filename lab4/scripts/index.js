@@ -3,6 +3,7 @@ function calcMultiple(){
     nums = [],
     amount,
     even;
+
   do {
     amount = prompt("Введите желаемое количество элементов в массиве", 2);
     if ( isNaN(amount) == true ) {
