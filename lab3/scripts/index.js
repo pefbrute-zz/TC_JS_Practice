@@ -31,7 +31,6 @@ function fTable() {
   
   x1 = parseInt(x1);
   x2 = parseInt(x2);
-  
   do {
     if (x1 < x2) {
       do {
