@@ -2,7 +2,7 @@ var obj = {
    className: 'class'
 }
 function addClass(object, name) {
-  if (!(object.className.includes(name))) {
+  if ( !( object.className.includes(name) ) ) {
     document.getElementById('classesList').append(' ' + name);
     object.className += ' ' + name;
     alert('Имя класса было добавлено в список классов успешно!');
@@ -14,10 +14,10 @@ function runProgram() {
   var className;
   do {
     className = prompt("Введите имя класса(или классов через пробел)", 2);
-    className = className.replace(/\s+/g,' ');
-    if (className == '' || className == ' ') {
+    className = clearExtraSpaces(className);
+    if ( isSpace(className) ) {
       alert('Ничего не введено');
     }
-  } while (className == '' || className == ' ')
+  } while ( isSpace(className) )
   addClass(obj, className);
 }

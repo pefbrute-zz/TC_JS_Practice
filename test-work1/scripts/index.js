@@ -2,8 +2,8 @@ function isCorrectEmail() {
   var email;
   do {
     email = prompt("Введите ваш электронный адрес", 2);
-    email = email.replace(/\s+/g, " ");
-    if (email == "" || email == " ") {
+    email = clearExtraSpaces(email);
+    if (isSpace(email)) {
       alert("Ничего не введено");
     } else if (email.length < 6) {
       alert(
@@ -14,7 +14,7 @@ function isCorrectEmail() {
     } else if (email.length >= 6) {
       var indexOfAtSign = email.indexOf("@");
       if (indexOfAtSign >= 0) {
-        if (isNotSpace(email[indexOfAtSign - 1])) {
+        if ( isNotSpace(email[indexOfAtSign - 1]) ) {
           let emailWithoutAtSign = email.slice(indexOfAtSign + 1, email.length);
           var FirstIndexOfDot = emailWithoutAtSign.indexOf(".");
 
@@ -23,7 +23,7 @@ function isCorrectEmail() {
           } else if (FirstIndexOfDot == 0) {
             alert("Не хватает 1 символа между @ знаком и первой точкой");
           } else {
-            if (isNotSpace(emailWithoutAtSign[FirstIndexOfDot - 1])) {
+            if ( isNotSpace(emailWithoutAtSign[FirstIndexOfDot - 1]) ) {
               var LastIndexOfDot = emailWithoutAtSign.lastIndexOf(".");
 
               if (LastIndexOfDot + 2 < emailWithoutAtSign.length) {
@@ -56,5 +56,5 @@ function isCorrectEmail() {
         break;
       }
     }
-  } while (email == "" || email == " ");
+  } while ( isSpace(email) );
 }
